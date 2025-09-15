@@ -171,6 +171,12 @@ input.checkbox:checked::after {
     transform: translate(-50%, -50%);
 }
 
+input.checkbox:disabled {
+    opacity: 0.4;
+    cursor: default;
+    border: 0.5px solid var(--placeholder-col);
+}
+
 li>span {
     flex-grow: 1;
 }

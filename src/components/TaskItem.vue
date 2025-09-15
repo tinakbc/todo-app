@@ -5,6 +5,7 @@
         class="checkbox"
         v-model="localTask.completed"
         @change="emitUpdate"
+        :disabled="localTask.editing"
       />
   
       <span
@@ -41,7 +42,7 @@
   // Emit events
   const emit = defineEmits(['update-task', 'delete-task'])
   
-  // Make a local copy of the task to allow editing
+  // Make local copy of task to allow editing
   const localTask = reactive({ ...props.task })
   
   // Emit updated task whenever it changes
@@ -54,6 +55,10 @@
   }
   
   function stopEditing() {
+  if (localTask.text.trim() === '') {
+    emit('delete-task')
+  } else {
     localTask.editing = false
   }
+}
   </script>
